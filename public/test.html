@@ -1,0 +1,75 @@
+<!--
+ * @Author: Miss.Hyx
+ * @Date: 2022-04-18 20:38:43
+ * @LastEditTime: 2022-04-18 21:03:36
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Hello</h1>
+</body>
+<script>
+  function getRes() {
+    let getDouble = (n) => n * 2
+    let obj = {}
+    let count = 1
+    let double = getDouble(count)
+
+    let proxy = new Proxy(obj, {
+      get: function (target, prop) {
+        return target[prop]
+      },
+      set: function (target, prop, value) {
+        target[prop] = value
+        if (prop === 'count') {
+          double = getDouble(value)
+        }
+      },
+      deleteProperty(target, prop) {
+        delete target[prop]
+        if (prop === 'count') {
+          double = NaN
+        }
+      },
+    })
+    console.log('proxy', proxy)
+    console.log('obj.count1', obj.count, double)
+    proxy.count = 2
+    console.log('obj.count2', obj.count, double)
+    delete proxy.count
+    // 删除属性后，我们打印log时，输出的结果就会是 undefined NaN
+    console.log('obj.count3', obj.count, double)
+  }
+  function getValue() {
+    let getDouble = n => n * 2
+    let _value = 1
+    double = getDouble(_value)
+
+    let count = {
+      get value() {
+        return _value
+      },
+      set value(val) {
+        _value = val
+        double = getDouble(_value)
+
+      }
+    }
+    console.log(count.value, double)
+    count.value = 2
+    console.log(count.value, double)
+  }
+  this.getValue();
+  // this.getRes();
+</script>
+
+</html>

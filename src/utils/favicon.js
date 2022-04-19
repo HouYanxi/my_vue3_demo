@@ -1,0 +1,26 @@
+/*
+ * @Author: Miss.Hyx
+ * @Date: 2022-04-19 10:53:25
+ * @LastEditTime: 2022-04-19 11:07:24
+ * @Description: 
+ */
+
+import {ref,watch} from 'vue'
+
+export default function useFavicon( newIcon ) {
+    const favicon = ref(newIcon)
+
+    const updateIcon = (icon) => {
+      document.head
+        .querySelectorAll(`link[rel*="icon"]`)
+        .forEach(el => el.href = `${icon}`)
+    }
+    const reset = ()=>favicon.value = '/favicon.ico'
+
+    watch( favicon,
+      (i) => {
+        updateIcon(i)
+      }
+    )
+    return {favicon,reset}
+  } 
