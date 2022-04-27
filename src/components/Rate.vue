@@ -1,10 +1,11 @@
 <!--
  * @Author: Miss.Hyx
  * @Date: 2022-04-19 13:57:45
- * @LastEditTime: 2022-04-19 16:12:23
+ * @LastEditTime: 2022-04-26 19:30:54
  * @Description: 
 -->
 <template>
+<slot></slot>
   <div :style="fontStyle">
     <div class="rate" @mouseout="mouseOut">
       <span @mouseover="mouseOver(num)" v-for="num in 5" :key="num">☆</span>
@@ -56,12 +57,13 @@ const themeObj = {
 const fontStyle = computed(() => {
   return `color:${themeObj[props.theme]};`
 })
-
+//props参数emit写法
 // let emits = defineEmits('update-rate')
 // function onRate(num) {
 //   console.log('emits',emits)
 //   emits('update-rate', num)
 // }
+//v-model参数emit写法
 let emits=defineEmits(['update:modelValue']);
 function onRate(num) {
   console.log('emits',emits)

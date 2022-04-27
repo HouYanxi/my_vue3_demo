@@ -1,18 +1,21 @@
 <!--
  * @Author: Miss.Hyx
  * @Date: 2022-04-19 16:55:49
- * @LastEditTime: 2022-04-19 17:17:03
+ * @LastEditTime: 2022-04-20 18:03:22
  * @Description: 
 -->
 
 <template>
-  <div class="box" :style="{ width: width + 'px' }"></div>
-  <button @click="change">click</button>
-  <div class="box1"></div>
-  <button @click="toggle">click</button>
-  <transition name="fade">
-    <h1 v-if="showTitle">你好 Vue 3</h1>
-  </transition>
+  <div>
+    <!-- vue3支持根组件有多个，但在路由切换，添加动画的时候没有效果 -->
+    <div class="box" :style="{ width: width + 'px' }"></div>
+    <button @click="change">click</button>
+    <div class="box1"></div>
+    <button @click="toggle">click</button>
+    <transition name="fade">
+      <h1 v-if="showTitle">你好 Vue 3</h1>
+    </transition>
+  </div>
 </template>
 
 <script setup>
