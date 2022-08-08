@@ -1,16 +1,16 @@
 /*
  * @Author: Miss.Hyx
  * @Date: 2022-04-17 11:46:37
- * @LastEditTime: 2022-04-26 20:56:23
+ * @LastEditTime: 2022-05-21 22:06:08
  * @Description:
  */
-import { createRouter, createWebHashHistory, Router, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 // import { createRouter, createWebHashHistory } from './grouter/index'
 import Home from '../pages/home.vue'
 import About from '../pages/about.vue'
 import Responsive from '../pages/Responsive.vue'
 
-const routes:Array<RouteRecordRaw> = [
+const routes = [
   {
     path: '/',
     name: 'Home',
@@ -25,7 +25,7 @@ const routes:Array<RouteRecordRaw> = [
     path: '/responsive',
     name: 'Responsive',
     // component: ()=>import('../pages/Responsive.vue')//懒加载
-    component: Responsive//懒加载
+    component: Responsive
   },
   {
     path: '/changeFavicon',
@@ -53,7 +53,7 @@ const routes:Array<RouteRecordRaw> = [
     component: ()=>import('../pages/TsSyntax.vue')//懒加载
   },
 ]
-const router:Router = createRouter({
+const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })

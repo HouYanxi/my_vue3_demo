@@ -1,7 +1,7 @@
 <!--
  * @Author: Miss.Hyx
  * @Date: 2022-04-17 11:49:08
- * @LastEditTime: 2022-04-27 09:26:27
+ * @LastEditTime: 2022-05-29 15:54:17
  * @Description: TodoList案例
 -->
 <template>
@@ -102,7 +102,7 @@ function useTodoList() {
     { name: '睡觉', done: false },
     { name: '打豆豆', done: false },
   ])
-  let todoList: Ref<TodoItem[]> = useStorage('todos', todo)
+  let todoList: Ref<TodoItem[]> = useStorage('todos', todo.value)
   //3.未完成的事项统计比例
   let unchoosed = computed(() => {
     return todoList.value.filter((item) => !item.done).length
